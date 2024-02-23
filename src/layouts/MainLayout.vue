@@ -10,107 +10,77 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title> CineShop </q-toolbar-title>
+        <div style="flex-grow: 1"></div>
+        <q-btn icon="shopping_cart" round @click="goToCart" />
+        <q-btn icon="person" round @click="goToAccount" />
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-item-label header>Navigation</q-item-label>
+        <q-item to="/" exact>
+          <q-item-section>Accueil</q-item-section>
+        </q-item>
+        <q-item to="/dvd">
+          <q-item-section>DVD</q-item-section>
+        </q-item>
+        <q-item to="/blu-ray">
+          <q-item-section>Blu-Ray</q-item-section>
+        </q-item>
+        <q-item to="/box-sets">
+          <q-item-section>Coffrets</q-item-section>
+        </q-item>
+        <q-item to="/deals">
+          <q-item-section>Bons Plans</q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer>
+      <q-toolbar>
+        <q-toolbar-title> Nom du Magasin &copy; 2024 </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
-  components: {
-    EssentialLink
-  },
+  setup() {
+    const leftDrawerOpen = ref(false);
+    const router = useRouter();
 
-  setup () {
-    const leftDrawerOpen = ref(false)
+    function toggleLeftDrawer() {
+      leftDrawerOpen.value = !leftDrawerOpen.value;
+    }
+
+    function goToCart() {
+      // Logique pour aller à la page du panier
+      router.push("/cart");
+    }
+
+    function goToAccount() {
+      // Logique pour aller à la page du compte utilisateur
+      router.push("/account");
+    }
 
     return {
-      essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+      toggleLeftDrawer,
+      goToCart,
+      goToAccount,
+    };
+  },
+});
 </script>
