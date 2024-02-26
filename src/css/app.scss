@@ -1,1 +1,5 @@
-// app global css in SCSS form
+@import "fonts.scss";
+
+body {
+  font-family: "Helvetica", sans-serif;
+}
