@@ -3,7 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title>
-          <q-btn flat dense icon="local_movies" to="/"></q-btn>
+          <q-btn flat dense icon="local_movies" size="1rem" to="/"></q-btn>
           CINESHOP
         </q-toolbar-title>
 
