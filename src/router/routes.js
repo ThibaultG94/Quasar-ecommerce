@@ -3,7 +3,7 @@ const routes = [
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: "", component: () => import("pages/IndexPage.vue") },
+      { path: "", component: () => import("pages/HomePage.vue") },
       { path: "dvd", component: () => import("pages/DVD/index.vue") },
       { path: "blu-ray", component: () => import("pages/BluRay/index.vue") },
       { path: "box-sets", component: () => import("pages/BoxSets/index.vue") },

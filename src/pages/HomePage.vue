@@ -1,8 +1,8 @@
 <template>
   <q-page class="flex flex-center">
     <div class="q-pa-md text-h6 text-center" style="max-width: 800px">
-      Profitez de nos meilleures offres et bons plans pour agrandir votre
-      bibliothèque cinématographique sans vous ruiner.
+      Bienvenue sur CINESHOP, votre espace dédié au meilleur du cinéma.
+      Découvrez nos sélections et nouveautés !
     </div>
   </q-page>
 </template>
@@ -11,6 +11,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "DealsPage",
+  name: "HomePage",
 });
 </script>
