@@ -15,10 +15,28 @@
           <q-route-tab to="/deals" label="Bons Plans" exact />
         </q-tabs>
 
-        <div style="flex-grow: 1"></div>
+        <div class="q-mx-md" style="max-width: 300px; width: 100%">
+          <q-input
+            filled
+            v-model="search"
+            dense
+            debounce="300"
+            placeholder="Rechercher un film..."
+          >
+            <template v-slot:append>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </div>
 
-        <q-btn icon="shopping_cart" round @click="goToCart" class="q-mr-sm" />
-        <q-btn icon="person" round @click="goToAccount" />
+        <q-btn
+          icon="shopping_cart"
+          round
+          @click="goToCart"
+          class="q-mr-sm"
+          color="secondary"
+        />
+        <q-btn icon="person" round @click="goToAccount" color="info" />
       </q-toolbar>
     </q-header>
 
@@ -65,7 +83,8 @@ body,
 .q-layout {
   font-family: "Blue Rays Regular", sans-serif;
 }
-.q-tab__label {
+.q-tab__label,
+.q-input {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: bold;
