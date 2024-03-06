@@ -2,24 +2,17 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-toolbar-title>
+        <q-toolbar-title class="col-3">
           <q-btn flat dense icon="local_movies" size="1rem" to="/"></q-btn>
           CINESHOP
         </q-toolbar-title>
 
-        <q-tabs align="left" class="q-ma-lg">
-          <q-route-tab to="/" label="Accueil" exact />
-          <q-route-tab to="/dvd" label="DVD" exact />
-          <q-route-tab to="/blu-ray" label="Blu-Ray" exact />
-          <q-route-tab to="/box-sets" label="Coffrets" exact />
-          <q-route-tab to="/deals" label="Bons Plans" exact />
-        </q-tabs>
-
-        <div class="q-mx-md" style="max-width: 300px; width: 100%">
+        <div class="col-7">
           <q-input
             filled
             v-model="search"
             dense
+            class="bg-white"
             debounce="300"
             placeholder="Rechercher un film..."
           >
@@ -29,14 +22,31 @@
           </q-input>
         </div>
 
-        <q-btn
-          icon="shopping_cart"
-          round
-          @click="goToCart"
-          class="q-mr-sm"
-          color="secondary"
-        />
-        <q-btn icon="person" round @click="goToAccount" color="info" />
+        <div class="col-2" align="right">
+          <q-btn
+            class="q-mr-xs"
+            icon="person"
+            round
+            @click="goToAccount"
+            color="info"
+          />
+          <q-btn
+            icon="shopping_cart"
+            round
+            @click="goToCart"
+            color="secondary"
+          />
+        </div>
+      </q-toolbar>
+
+      <q-toolbar>
+        <q-tabs align="left" class="full-width">
+          <q-route-tab to="/" label="Accueil" exact />
+          <q-route-tab to="/dvd" label="DVD" exact />
+          <q-route-tab to="/blu-ray" label="Blu-Ray" exact />
+          <q-route-tab to="/box-sets" label="Coffrets" exact />
+          <q-route-tab to="/deals" label="Bons Plans" exact />
+        </q-tabs>
       </q-toolbar>
     </q-header>
 
