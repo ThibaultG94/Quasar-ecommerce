@@ -7,14 +7,18 @@
           CINESHOP
         </q-toolbar-title>
 
-        <div class="col-7">
+        <div class="col-4"></div>
+
+        <div class="col-3">
           <q-input
-            filled
-            v-model="search"
-            dense
-            class="bg-white"
+            bg-color="white"
             debounce="300"
+            dense
+            filled
+            :loading="loadingInProgress"
             placeholder="Rechercher un film..."
+            @input="searchMovies"
+            v-model="search"
           >
             <template v-slot:append>
               <q-icon name="search" />
@@ -84,6 +88,25 @@ export default defineComponent({
       goToCart,
       goToAccount,
     };
+  },
+
+  data() {
+    return {
+      loadingInProgress: false,
+      search: "",
+    };
+  },
+
+  methods: {
+    debutChargement() {
+      this.loadingInProgress = true;
+    },
+    finChargement() {
+      this.loadingInProgress = false;
+    },
+    searchMovies() {
+      this.$router.push({ name: "search", query: { q: this.search } });
+    },
   },
 });
 </script>
