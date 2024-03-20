@@ -1,17 +1,16 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title class="col-3">
+      <q-toolbar class="q-pa-md">
+        <q-toolbar-title class="col-4">
           <q-btn flat dense icon="local_movies" size="1rem" to="/"></q-btn>
           CINESHOP
         </q-toolbar-title>
 
-        <div class="col-4"></div>
-
-        <div class="col-3">
+        <div class="col-7">
           <q-input
             bg-color="white"
+            class="rounded-borders"
             debounce="300"
             dense
             filled
@@ -26,15 +25,16 @@
           </q-input>
         </div>
 
-        <div class="col-2" align="right">
+        <div class="col-1" align="right">
           <q-btn
-            class="q-mr-xs"
+            class="q-mr-md"
             icon="person"
             round
             @click="goToAccount"
             color="info"
           />
           <q-btn
+            class="q-mr-xs"
             icon="shopping_cart"
             round
             @click="goToCart"
@@ -43,7 +43,7 @@
         </div>
       </q-toolbar>
 
-      <q-toolbar>
+      <q-toolbar class="bg-secondary">
         <q-tabs align="left" class="full-width">
           <q-route-tab to="/" label="Accueil" exact />
           <q-route-tab to="/dvd" label="DVD" exact />
@@ -121,6 +121,13 @@ body,
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: bold;
+}
+.rounded-borders .q-field__control {
+  border-radius: 15px;
+}
+.rounded-borders .q-field__inner {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .q-tab {
   position: relative;
